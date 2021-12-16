@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "apiVersionSetId": "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('ApimServiceName'), 'myVersionSetID')]",
+        "path": "myAPIPet/743cf2b6bba2414bbbcece87b150105d",
+        "value": "https://conferenceapi.azurewebsites.net/?format=json",
+        "format": "swagger-link-json"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/conferenceTool')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    }
+  ]
+}
